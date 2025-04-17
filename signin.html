@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #f18f76, #feb47b); /* Beautiful gradient background */
+}
+
+.signup-container {
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    padding: 20px ;
+    background-color: #e99f9f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    width: 80%;
+    padding: 10px 10px;
+    margin: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sign{
+    width: 80%;
+    padding: 10px;
+    margin-left: 25px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+}
+.home-button {
+  background-image: linear-gradient(to right, #333, #555);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-image 0.3s ease-in-out;
+  margin-bottom: 600px;
+  justify-content: left;
+}
+a{text-decoration: none;}
+.home-button:hover {
+  background-image: linear-gradient(to right, #444, #666);
+}
+.a {
+    text-decoration: none;
+    color: #0062ff;
+}
+
+.a:hover {
+    text-decoration: underline;
+}
+</style>
+<body>
+    <a href="newinterface.html"> <button class="home-button">Home</button></a>
+    <div class="signup-container">
+        <form action="login.html" id="signupForm">
+            <h2>Sign Up </h2>
+            <input type="text" id="name" name="Name" placeholder="Enter Your Name" required>
+            <input type="email" id="email" name="username" placeholder="Email " required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button class="sign" type="submit">Signup</button>
+            <p>Already have a account? <a href="login.html">LogIn</a></p>
+        </form>
+    </div>
+</body>
+</html>

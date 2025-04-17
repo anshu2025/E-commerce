@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Cart Page</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: linear-gradient(to bottom, #f18f76, #feb47b);
+}
+
+.cart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Align items center */
+    gap: 20px; /* Add spacing between items */
+}
+
+.cart-item {
+    background-color: #dda5a5;
+    flex: 1 1 calc(33.33% - 40px); /* Responsive sizing: Adjusts to 3 items per row */
+    max-width: 200px; /* Set a maximum width for items */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.cart-summary {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.home-button {
+    background-color: #67b86d;
+    color: #b913e7;
+    padding: 5px 20px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-button.animated {
+    animation: pulse 1s infinite;
+}
+
+.remove-button {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive design: Adjust for smaller screens */
+@media (max-width: 768px) {
+    .cart-item {
+        flex: 1 1 calc(50% - 40px); /* Adjusts to 2 items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-item {
+        flex: 1 1 100%; /* Single item per row on very small screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <a href="newinterface.html"><button class="home-button">Home</button></a>
+    <h1>Your Cart</h1>
+    <div class="cart">
+        <!-- Cart items will be displayed here -->
+    </div>
+    <div class="cart-summary">
+        <!-- Total items and total cost will be displayed here -->
+    </div>
+    <script>
+        function loadCartFromLocalStorage() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    renderCart(cart);
+}
+
+function renderCart(cart) {
+    const cartElement = document.querySelector(".cart");
+    cartElement.innerHTML = ""; // Clear previous items
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    if (cart.length === 0) {
+        cartElement.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+        const fragment = document.createDocumentFragment();
+
+        cart.forEach((product, index) => {
+            totalItems++;
+            totalPrice += product.price || 0;
+
+            const cartItemElement = document.createElement("div");
+            cartItemElement.classList.add("cart-item");
+            cartItemElement.innerHTML = `
+                <div>
+                    <img src="${product.image}" alt="${product.name}">
+                    <p><strong>${product.name}</strong></p>
+                    <p>Price: $${product.price || "N/A"}</p>
+                    <p>Age: ${product.age || "N/A"}</p>
+                    <p>Description: ${product.description || "No description available."}</p>
+                    <button class="remove-button" onclick="removeFromCart(${index})">Remove</button>
+                </div>
+            `;
+            fragment.appendChild(cartItemElement);
+        });
+
+        cartElement.appendChild(fragment);
+    }
+
+    const cartSummaryElement = document.querySelector(".cart-summary");
+    cartSummaryElement.innerHTML = `Total Items: ${totalItems}, Total Cost: $${totalPrice.toFixed(2)}`;
+}
+
+function removeFromCart(index) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1); // Remove the selected product
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart(cart);
+}
+
+// Load cart on page load
+loadCartFromLocalStorage();
+    </script>
+</body>
+</html>

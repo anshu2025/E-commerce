@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Logo</title>
+</head>
+<style>
+    body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #3d3a3a;
+background-image:url(image/logobgc.jpg);
+background-size: cover;
+margin: 0;
+font-family: Arial;
+}
+div{
+    height: 300px;
+    width: 300px;
+    border-radius: 15%;
+    background-image: url(image/logo.webp);
+    background-size:cover;
+}
+
+.logo {
+display: flex;
+align-items: center;
+font-size: 2rem;
+color: #dc1616;
+text-decoration: none;
+}
+
+.logo i {
+margin-right: 10px;
+color: #ff6600;
+}
+
+</style>
+<body>
+    <a href="newinterface.html" class="logo" id="logo">
+        <i class="fas fa-shopping-cart"></i>
+        <div></div>
+    </a>
+<script>
+function hideLogo() {
+    document.querySelector('.logo').style.display = 'none';
+    window.location.href = 'newinterface.html';
+}
+setTimeout(hideLogo, 5000);
+</script>
+</body>
+</html>

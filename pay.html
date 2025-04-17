@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    #qr-container {
+      display: none;
+      margin-top: 20px;
+    }
+    img {
+      max-width: 300px;
+      height: auto;
+    }
+    .btn {
+      background-color: #3399cc;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #2878a9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Make a Payment</h1>
+  <button class="btn" onclick="showQRCode()">Display Google Pay QR Code</button>
+  
+  <div id="qr-container">
+    <h2>Scan to Pay</h2>
+    <img src="image/QR.jpg" alt="Google Pay QR Code">
+  </div>
+
+  <script>
+    function showQRCode() {
+      const qrContainer = document.getElementById('qr-container');
+      qrContainer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

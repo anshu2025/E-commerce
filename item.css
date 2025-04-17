@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f18f76, #feb47b);
+  }
+  .home-button {
+    background-color: #67b86d;
+    color: #b913e7;
+    padding: 5px 20px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .collection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .clothing-item {
+    background-color: #dda5a5;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #5418d4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+  }
+  .clothing-item img {
+    width: 200px;
+    height: 270px;
+    margin-left: 25px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  .clothing-item .details {
+    padding: 20px;
+  }
+  .clothing-item .name {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .clothing-item .price {
+    font-size: 16px;
+    color: #2134de;
+  }
+  .clothing-item .age {
+    font-size: 14px;
+    color: #0f38cb;
+  }
+  .add-to-cart {
+    background-color: #67b86d;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 15px;
+  }
+  .home-button.animated {
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  
+  .payment a{
+    text-decoration: none;
+    color: #fff;
+  }

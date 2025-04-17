@@ -1,0 +1,184 @@
+ /* General Styling */
+ body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f18f76, #feb47b); /* Beautiful gradient background */
+    color: white;
+}
+p {
+    margin: 0;
+}
+.pic {
+    height: 75px;
+    width: 75px;
+    margin: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    background-size: cover;
+
+    border-radius: 50%;
+}
+.popup {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1000;
+background-color: rgba(0, 0, 0, 0.8);
+padding: 20px;
+border-radius: 10px;
+width: 200px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+color: #fff;
+}
+
+.popupContent {
+text-align: center;
+}
+
+button {
+margin: 5px;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+background-color: #fff;
+color: #000;
+}
+.cancle{
+    padding-left: -35px;
+    text-decoration: none;
+    background-color: rgb(225, 114, 17);
+    height: 30px;
+    }
+    .cancle:hover{
+        background-color: #484343;
+    }
+
+button:hover {
+background-color: #ccc;
+}
+.option{
+padding:5px 5px ;
+display: flex;
+justify-content: center;
+}
+.logo {
+    background-image: url(image/logo.webp); 
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+}
+header, .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+}
+.nav, .pannel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 10px;
+}
+.border {
+    font-size: 23px;
+    padding: 10px;
+    margin: 5px;
+    color: rgb(252, 248, 248);
+    text-align: center;           
+}
+.border a { 
+    text-decoration: none;
+    color: white;
+}
+input {
+    width: 170px;
+}
+.search input {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+ 
+#searchButton{
+    padding: 5px 15px;
+}
+#men {
+    background-image: url(image/men.jpg);
+    background-size: cover;
+}
+#women {
+    background-image: url(image/women.jpg);    
+    background-size: cover;
+}
+#who {
+    background-image: url(image/health.webp);    
+    background-size: cover;
+}
+#electric {
+    background-image: url(image/ele.png);
+    background-size: cover;
+}
+.box {
+    width: 300px;
+    height: 250px;
+    display: flex;
+    justify-content: right;
+    align-items: start;
+    margin: 10px;
+    border-radius: 5px;
+}
+footer a {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 2px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 5s ease-in-out;
+}
+
+footer a:hover {
+    font-size: 14px;
+    background-color: #363434;
+    color: #fff;
+    transform: scale(1.9);
+    transition: background-color 5s ease-in-out;
+    transform: rotate(360deg);
+}
+footer a:active {
+    transform: scale(1.9);
+}
+.content {
+    justify-content: space-evenly;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+    }
+    .content {
+        justify-content: center;
+    }
+    .box {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        width: 90%;
+        margin: auto;
+    }
+    .search {
+        flex-direction: column;
+    }
+}

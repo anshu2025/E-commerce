@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Diamond</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="men.css">
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="logo border"></div>
+            <div class="border"><a href="index.html">Home</a></div>
+            <div class="border"><a href="signin.html">Sign In</a> | <a href="login.html">Log In</a></div>
+            <div class="search border">
+                <select style="width: 55px;height: 30px;">
+                    <option>&#9776; All</option>
+                    <option>Men's clothes</option>
+                    <option>Women's clothes</option>
+                    <option>Kid's clothes</option>
+                    <option>Beauty product</option>
+                    <option>Electric product</option>
+                </select>
+                <input id="searchInput" type="text" placeholder="Search" required>
+                <button id="searchButton" >&#x1F50D;</button>
+                <button class="cancle"><a href="newinterface.html">Cancle</a></button>
+            </div>
+            <div class="cart border">
+                <p>&#128722;</p>
+               <a href="cart.html"> Cart</a>
+            </div>
+            <div>
+                <div class="pic" id="profilePic"></div>
+                <p id="profileText" style="cursor: pointer;">&#128100; Profile</p>
+            </div>
+            
+            <!-- Popup box -->
+            <div id="popupBox" class="popup" style="display: none;">
+                <div class="popupContent">
+                    <h3>Profile Options</h3>
+                    <input type="file" accept="image/*" id="upload" capture="camera" onchange="previewImage(event)">
+                    <div class="option">
+
+                       <button class="option" id="removeProfile" onclick="removeProfilePicture()" style="display: none;">Remove</button>
+                       <button class="option" onclick="closePopup()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <main class="content" id="mainContent">
+        <div class="box" id="men"><footer><a href="menclthes.html">Men's Collection</a></footer></div>
+        <div class="box" id="women"><footer><a href="wo.html">Women's Collection</a></footer></div>
+        <div class="box" id="who"><footer><a href="who.html">Health & Care</a></footer></div>
+        <div class="box" id="electric"><footer><a href="technical.html">Electronic Products</a></footer></div>
+    </main>
+     <div id="resultContainer"></div>
+
+</body>
+<script src="script.js"></script>
+</html>
