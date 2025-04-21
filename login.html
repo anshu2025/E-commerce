@@ -1,122 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Global Styles */
     body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #f18f76, #feb47b); /
-}
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #afffb8, #a50ce1);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box;
+    }
 
-.container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #eda6a6;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-right: 55px;
-}
+    /* Container */
+    .login-container {
+      background: #9ce5f3;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
 
-.form-container {
-    width: 100%;
-}
+    h2 {
+      text-align: center;
+      color: #1c0ae9;
+      font-size: 1.8em;
+      margin-bottom: 1em;
+    }
 
-.form-switch {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+    label {
+      font-size: 1em;
+      color: #e96c0d;
+    }
 
-.login {
-    width: 48%;
-    padding: 10px;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 100px;
-}
+    input {
+      width: 100%;
+      padding: 0.8em;
+      margin: 0.5em 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-button:hover {
-    background-color: #0056b3;
-}
+    button {
+      width: 100%;
+      padding: 0.8em;
+      background: #098ec7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
 
-.hidden {
-    display: none;
-}
+    button:hover {
+      background: #ff7b89;
+    }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
+    p {
+      font-size: 0.9em;
+      margin-top: 1em;
+      text-align: center;
+    }
 
-input {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    /* Error Messages */
+    #errorMessage {
+      color: #ff4e4e;
+      font-size: 0.9em;
+      margin-top: 0.5em;
+      text-align: center;
+    }
 
-p {
-    text-align: center;
-    font-size: 14px;
-}
+    /* Links */
+    .navigation-links {
+      text-align: center;
+      margin-top: 1em;
+    }
 
-#switchToSignup {
-    text-decoration: none;
-    color: #4319ff;
-}
-.home-button {
-  background-image: linear-gradient(to right, #333, #555);
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-image 0.3s ease-in-out;
-  margin-bottom: 600px;
-  width: 70px;
-}
+    .navigation-links a {
+      color: #a70822;
+      text-decoration: none;
+      margin: 0 0.5em;
+      font-size: 0.9em;
+    }
 
-.home-button:hover {
-  background-image: linear-gradient(to right, #444, #666);
-}
+    .navigation-links a:hover {
+      text-decoration: underline;
+    }
 
-.home-button:active {
-  transform: scale(0.9);
-}
-#switchToSignup:hover {
-    text-decoration: underline;
-}
-</style>
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .login-container {
+        padding: 1em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      button {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
 <body>
-    <a href="newinterface.html"> <button class="home-button">Home</button></a>
-    <div class="container">
-        <div class="form-container">
-            <div class="form-switch">
-            </div>
-            <form action="index.html">
-                <h2>Login</h2>
-                <input type="email" id="loginEmail" placeholder="Email" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <button type="submit" class="login">Login</button>
-                <p>Don't have an account? <a href="signin.html" id="switchToSignup">Sign up</a></p>
-            </form>
-        </div>
+  <div class="login-container">
+    <h2>Login</h2>
+    <div id="accountStatus"></div>
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input type="email" id="loginEmail" required>
+      <label for="password">Password:</label>
+      <input type="password" id="loginPassword" required>
+      <button type="submit">Login</button>
+    </form>
+    <p id="errorMessage" style="display: none;">Invalid credentials. Try again.</p>
+
+    <div class="navigation-links">
+      <a href="newinterface.html">Home</a> |
+      <a href="signup.html">Signup</a> |
+      <a href="newinterface.html" id="dashboardLink" style="display: none;">Dashboard</a>
     </div>
+  </div>
+
+  <script>
+    const accountStatus = document.getElementById('accountStatus');
+    const dashboardLink = document.getElementById('dashboardLink');
+
+    const userName = localStorage.getItem('userName');
+    const userLoggedIn = localStorage.getItem('userLoggedIn');
+
+    if (userName) {
+      accountStatus.innerText = `Status: Signed up as ${userName}`;
+      if (userLoggedIn === 'true') {
+        dashboardLink.style.display = 'inline';
+      } else {
+        dashboardLink.style.display = 'none';
+      }
+    } else {
+      accountStatus.innerText = 'Status: No account exists';
+    }
+
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const loginEmail = document.getElementById('loginEmail').value;
+      const loginPassword = document.getElementById('loginPassword').value;
+
+      const storedEmail = localStorage.getItem('userEmail');
+      const storedPassword = localStorage.getItem('userPassword');
+
+      if (loginEmail === storedEmail && loginPassword === storedPassword) {
+        localStorage.setItem('userLoggedIn', 'true'); // Set logged-in status
+        window.location.href = 'newinterface.html'; // Redirect to dashboard
+      } else {
+        errorMessage.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>

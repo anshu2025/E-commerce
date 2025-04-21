@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create an Account</h2>
+    <div id="accountStatus"></div>
+    <form id="signupForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p id="errorMessage" style="display: none;">This email is already in use. Please log in or use another email.</p>
+    <p id="successMessage" style="display: none;">Account created successfully! Please log in.</p>
+
+    <div class="navigation-links">
+      <a href="newinterface.html">Home</a> |
+      <a href="login.html">Login</a> |
+      <a href="newinterface.html" id="dashboardLink" style="display: none;">Dashboard</a>
+    </div>
+  </div>
+
+  <script>
+    const accountStatus = document.getElementById('accountStatus');
+    const dashboardLink = document.getElementById('dashboardLink');
+
+    // Retrieve user data from localStorage
+    const userName = localStorage.getItem('userName');
+    const userLoggedIn = localStorage.getItem('userLoggedIn');
+
+    if (userName) {
+      accountStatus.innerText = `Status: Signed up as ${userName}`;
+      if (userLoggedIn === 'true') {
+        dashboardLink.style.display = 'inline'; // Show Dashboard link
+      } else {
+        dashboardLink.style.display = 'none'; // Hide Dashboard link
+      }
+    } else {
+      accountStatus.innerText = 'Status: No account exists';
+    }
+
+    const signupForm = document.getElementById('signupForm');
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+
+    signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const storedEmail = localStorage.getItem('userEmail');
+
+      if (storedEmail && storedEmail === email) {
+        errorMessage.style.display = 'block';
+        successMessage.style.display = 'none';
+      } else {
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userPassword', password);
+        localStorage.setItem('userLoggedIn', 'false'); // Default to logged-out status
+        errorMessage.style.display = 'none';
+        successMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

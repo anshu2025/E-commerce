@@ -10,10 +10,25 @@
       text-align: center;
       margin: 0;
       padding: 20px;
-      background-color: #f9f9f9;
+      background: linear-gradient(235deg, #4facfe, #59f669);
     }
     h1 {
       color: #333;
+    }
+    .payment-options {
+      margin-top: 20px;
+      text-align: left;
+      display: inline-block;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .payment-options h2 {
+      margin-bottom: 15px;
+    }
+    .option {
+      margin-bottom: 10px;
     }
     #qr-container {
       display: none;
@@ -39,17 +54,55 @@
 </head>
 <body>
   <h1>Make a Payment</h1>
-  <button class="btn" onclick="showQRCode()">Display Google Pay QR Code</button>
-  
+
+  <div class="payment-options">
+    <h2>Select Payment Method:</h2>
+    <div class="option">
+      <input type="radio" id="cod" name="paymentMethod" value="cod">
+      <label for="cod">Cash on Delivery (COD)</label>
+    </div>
+    <div class="option">
+      <input type="radio" id="googlePay" name="paymentMethod" value="googlePay">
+      <label for="googlePay">Google Pay</label>
+    </div>
+    <div class="option">
+      <input type="radio" id="creditCard" name="paymentMethod" value="creditCard">
+      <label for="creditCard">Credit/Debit Card</label>
+    </div>
+    <button class="btn" onclick="proceedPayment()">Proceed to Pay</button>
+  </div>
+
   <div id="qr-container">
     <h2>Scan to Pay</h2>
     <img src="image/QR.jpg" alt="Google Pay QR Code">
   </div>
 
   <script>
-    function showQRCode() {
-      const qrContainer = document.getElementById('qr-container');
-      qrContainer.style.display = 'block';
+    function proceedPayment() {
+      const paymentMethods = document.getElementsByName('paymentMethod');
+      let selectedMethod = null;
+
+      // Check which payment method is selected
+      for (const method of paymentMethods) {
+        if (method.checked) {
+          selectedMethod = method.value;
+        }
+      }
+
+      if (!selectedMethod) {
+        alert('Please select a payment method.');
+        return;
+      }
+
+      if (selectedMethod === 'cod') {
+        alert('You have selected Cash on Delivery (COD).');
+      } else if (selectedMethod === 'googlePay') {
+        const qrContainer = document.getElementById('qr-container');
+        qrContainer.style.display = 'block';
+      } else if (selectedMethod === 'creditCard') {
+        alert('Redirecting to secure Credit/Debit Card payment gateway...');
+        // You can add a redirect to a payment gateway page here
+      }
     }
   </script>
 </body>

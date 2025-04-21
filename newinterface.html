@@ -11,13 +11,23 @@
 <body>
     <header>
         <div class="nav">
-            <div class="logo border"></div>
+            <div class="logo border"> <img src="image/logo.webp" alt="logo"></div>
             <div class="border"><a href="index.html">Home</a></div>
-            <div class="border"><a href="signin.html">Sign In</a> | <a href="login.html">Log In</a></div>
+            
+            <div id="links">
+                <div id="accountStatus"></div>
+                <div id="authOptions">
+                    <a href="login.html" id="loginLink">Login</a> |
+                    <a href="signup.html" id="signupLink">Signup</a>
+                </div>
+                <button id="logoutButton" style="display: none;">Logout</button>
+                <button id="removeAccountButton" style="background-color: greenyellow; display:none;">Remove Account</button>
+            </div>
+
             <div class="search border">
                 <select style="width: 55px;height: 30px;">
                     <option>&#9776; All</option>
-                    <option>Men's clothes</option>
+                    <option>Men's clothes</a></option>
                     <option>Women's clothes</option>
                     <option>Kid's clothes</option>
                     <option>Beauty product</option>
@@ -50,13 +60,59 @@
             </div>
     </header>
     <main class="content" id="mainContent">
-        <div class="box" id="men"><footer><a href="menclthes.html">Men's Collection</a></footer></div>
-        <div class="box" id="women"><footer><a href="wo.html">Women's Collection</a></footer></div>
-        <div class="box" id="who"><footer><a href="who.html">Health & Care</a></footer></div>
-        <div class="box" id="electric"><footer><a href="technical.html">Electronic Products</a></footer></div>
-    </main>
+        <div class="box" id="men"><footer><a href="menclthes.html">Men</a></footer></div>
+        <div class="box" id="women"><footer><a href="wo.html">Women</a></footer></div>
+        <div class="box" id="who"><footer><a href="who.html">Health</a></footer></div>
+        <div class="box" id="electric"><footer><a href="technical.html">Electronic</a></footer></div>
+    
      <div id="resultContainer"></div>
+    </main>
 
 </body>
 <script src="script.js"></script>
+<script>
+    // Retrieve user data from localStorage
+    const userName = localStorage.getItem('userName');
+    const userLoggedIn = localStorage.getItem('userLoggedIn');
+
+    const accountStatus = document.getElementById('accountStatus');
+    const authOptions = document.getElementById('authOptions');
+    const logoutButton = document.getElementById('logoutButton');
+    const removeAccountButton = document.getElementById('removeAccountButton');
+
+
+    // Check user account and login status
+    if (userName && userLoggedIn === 'true') {
+        accountStatus.innerText = `Status: Logged in as ${userName}`;
+        authOptions.style.display = 'none'; // Hide Login and Signup links
+        logoutButton.style.display = 'inline'; // Show Logout button
+        removeAccountButton.style.display = 'inline'; // Show Logout button
+    } else {
+        accountStatus.innerText = 'Status: No account logged in';
+        authOptions.style.display = 'inline'; // Show Login and Signup links
+        logoutButton.style.display = 'none'; // Hide Logout button
+    }
+
+    // Logout button functionality
+    logoutButton.addEventListener('click', function () {
+        localStorage.setItem('userLoggedIn', 'false'); // Update logged-in status
+        alert('You have been logged out.');
+        location.reload(); // Refresh page to update UI
+    });
+    
+    removeAccountButton.addEventListener('click', function () {
+      const confirmRemove = confirm('Are you sure you want to permanently delete your account?');
+
+      if (confirmRemove) {
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userPassword');
+        localStorage.removeItem('userLoggedIn');
+        
+        alert('Your account has been removed. You will be redirected to the Sign-Up page.');
+        window.location.href = 'signup.html';
+      }
+    });
+</script>
+
 </html>

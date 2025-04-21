@@ -28,7 +28,7 @@ body {
   }
   .clothing-item img {
     width: 200px;
-    height: 270px;
+    height: 250px;
     margin-left: 25px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
